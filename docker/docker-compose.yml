@@ -1,0 +1,27 @@
+version: '3'
+services:
+  rails:
+    build:
+      context: ./rails
+    container_name: rails_rails
+    command: bash /docker-entrypoint.sh
+    env_file: .env
+    ports:
+      - "3000:3000"
+      - "1234:1234"
+      - "127.0.0.1:26162:26162" #ディスパッチャーポートだけはipまで書かないとうまくデバッグできない。
+    volumes:
+      - ../rails-source:/rails-app:cached
+    links:
+      - mysql
+    environment:
+    - TZ=Asia/Tokyo #環境変数にタイムゾーンを設定
+  mysql:
+    build:
+      context: ./mysql
+    container_name: rails_mysql
+    volumes:
+      - ./data-volumes/mysql/var-lib-mysql:/var/lib/mysql:cached
+    env_file: .env
+    ports:
+      - "3306:3306"
