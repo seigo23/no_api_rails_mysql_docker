@@ -1,0 +1,16 @@
+COMMON: &COM
+  author: "Seigo"
+  logo:
+    source: "https://wings.msn.to/image/wings.jpg"
+    width:  215
+    height: 67
+development:
+  hoge: "dev"
+  <<: *COM
+test:
+  hoge: "test"
+  <<: *COM
+production:
+  hoge: "pro"
+  <<: *COM
+

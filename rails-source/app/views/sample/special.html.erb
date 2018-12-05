@@ -1,0 +1,20 @@
+<div>
+  コントローラ側で呼び出すviewをデフォルトから変えた<br/>
+  <%=@msg %>
+
+
+  <div>aaaa1</div>
+<%
+=begin
+%>
+
+  <% @msg = "aaaaaaaaa" %>
+  <div>aaaa2</div>
+
+<%
+=end
+%>
+
+  <p>メッセージが変わっているか</p>
+  <%=@msg %>
+</div>
