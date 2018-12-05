@@ -16,10 +16,10 @@ default: &default
 
 development:
   <<: *default
-  database: rails #<%= ENV['DB_NAME'] %>
-  username: root #<%= ENV['DB_USERNAME'] %>
-  password: password #<%= ENV['DB_PASS'] %>
-  host: mysql #<%= ENV['DB_HOST'] %>
+  database:  <%= ENV.fetch("DB_NAME") { database_hoge } %>
+  username: <%= ENV.fetch("DB_USERNAME") { username_hoge } %>
+  password: <%= ENV.fetch("DB_PASS") { password_hoge } %>
+  host:     <%= ENV.fetch("DB_HOST") { host_hoge } %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
